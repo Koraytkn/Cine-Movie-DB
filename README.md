@@ -20,12 +20,15 @@ Before deploying the application, ensure you have the following software install
 ### Update Database Credentials
 
 for the database connection:
+
 . Inside the movie_db/movie_db/settings.py file there is the "DATABASES" section. Currently it has the credentials for the our local database server 
 and 'HOST' 'USER' 'DATABASE' 'PASSWORD' 'NAME' fields need to be updated accordingly.
 
 ### Initialize Database
 . In order to manage a successfull connection to database and usage of the application the initialization of the tables and the triggers constitute a nonignorable importance 
+
 . Use the provided create_table.sql file to set up your database schema.
+
 . The insert.py file contains initial data as per the project requirements. Credentials in this file for the database connection need to be modified accordingly.
 
 
