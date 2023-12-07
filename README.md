@@ -1,4 +1,4 @@
-# Movie-DB
+# Cine-Movie-DB
 
 This project aims to develop a database application for a movie ticket booking and rating system.
 Design analysis, ER diagram, explanation of handled constraints and implementation can be found in Report.
