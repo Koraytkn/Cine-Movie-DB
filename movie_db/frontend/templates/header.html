@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block base %}
+<div class="container mt-5">
+
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link" href="/manager-login/">Manager Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/director-login/">Director Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="/audience-login/">Audience Login</a>
+    </li>
+  </ul>
+
+    {% block header %}
+    {% endblock %}
+
+</div>
+{% endblock %}

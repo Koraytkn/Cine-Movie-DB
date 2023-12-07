@@ -1,0 +1,369 @@
+{% extends "header.html" %}
+{% block header %}
+
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+    {{ message }}
+</div>
+{% endfor %}
+
+<div class="container mt-5">
+    <form
+        class="col-6 mx-auto card p-3 shadow-lg"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+        <h2>Add New Audience</h2>
+        <hr />
+        <div class="mb-3">
+            <label for="name" class="form-label">Audience Name</label>
+            <input
+                name="name"
+                class="form-control"
+                value=""
+                required
+                type="text"
+            />
+        </div>
+        <div class="mb-3">
+            <label for="surname" class="form-label">Audience Surname</label>
+            <input
+                name="surname"
+                class="form-control"
+                value=""
+                required
+                type="text"
+            />
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Audience Password</label>
+            <input
+                name="password"
+                class="form-control"
+                value=""
+                required
+                type="password"
+            />
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Audience Username</label>
+            <input
+                name="username"
+                class="form-control"
+                value=""
+                required
+                type="text"
+            />
+        </div>
+        <button type="submit" class="btn btn-success" value="Add Audience" name="Add Audience">
+            Add Audience
+        </button>
+    </form>
+
+    <form
+    class="col-6 mx-auto card p-3 shadow-lg"
+    method="POST"
+    enctype="multipart/form-data"
+>
+    <h2>Add New Director</h2>
+    <hr />
+    <div class="mb-3">
+        <label for="name" class="form-label">Director Name</label>
+        <input
+            name="director_name"
+            class="form-control"
+            value=""
+            required
+            type="text"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="surname" class="form-label">Director Surname</label>
+        <input
+            name="director_surname"
+            class="form-control"
+            value=""
+            required
+            type="text"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Director Password</label>
+        <input
+            name="director_password"
+            class="form-control"
+            value=""
+            required
+            type="password"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Director Username</label>
+        <input
+            name="director_username"
+            class="form-control"
+            value=""
+            required
+            type="text"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="nation" class="form-label">Director Nation</label>
+        <input
+            name="director_nation"
+            class="form-control"
+            value=""
+            required
+            type="text"
+        />
+    </div>
+    <div class="mb-3">
+      <label for="platform" class="form-label">Director Platform</label>
+      <input
+          name="director_platform"
+          class="form-control"
+          value=""
+          type="text"
+      />
+  </div>
+    <button type="submit" class="btn btn-success" value="Add Director" name="Add Director">
+        Add Director
+    </button>
+</form>
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>Update Director Platform ID</h2>
+<hr />
+<div class="mb-3">
+    <label for="director_username" class="form-label">Director Username</label>
+    <input
+        name="director_username"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="director_platform_id" class="form-label">New Platform ID</label>
+    <input
+        name="director_platform_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="Update Director Platform" name="Update Director Platform">
+    Update Director Platform ID
+</button>
+</form>
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>View All Directors</h2>
+<hr />
+
+<button type="submit" class="btn btn-success" value="View All Directors" name="View All Directors">
+    View All Directors
+</button>
+</form>
+
+<h1>Directors</h1>
+
+    <table class="container">
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Nation</th>
+            <th>PlatformId</th>
+        </tr>
+
+        {% for director in directors %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{director.username}}</td>
+            <td>{{director.name}}</td>
+            <td>{{director.surname}}</td>
+            <td>{{director.nation}}</td>
+            <td>{{director.platform_id}}</td>
+       </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>View Director's Movies</h2>
+<hr />
+<div class="mb-3">
+    <label for="director_username" class="form-label">Director Username</label>
+    <input
+        name="director_username"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="View Director's Movies" name="View Director's Movies">
+    View Director's Movies
+</button>
+</form>
+
+<h1>Director's Movies</h1>
+
+    <table class="container">
+        <tr>
+            <th>#</th>
+            <th>Movie Id</th>
+            <th>Movie Name</th>
+            <th>Theater Id</th>
+            <th>Theater District</th>
+            <th>Date</th>
+            <th>Time Slot</th>
+            <th>Duration</th>
+        </tr>
+
+        {% for movie in movies %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{movie.movie_id}}</td>
+            <td>{{movie.movie_name}}</td>
+            <td>{{movie.theater_id}}</td>
+            <td>{{movie.theater_district}}</td>
+            <td>{{movie.date}}</td>
+            <td>{{movie.time_slot}}</td>
+            <td>{{movie.duration}}</td>
+       </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>View Audience Ratings</h2>
+<hr />
+<div class="mb-3">
+    <label for="auidience_username" class="form-label">Audience Username</label>
+    <input
+        name="audience_username"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="View Audience Ratings" name="View Audience Ratings">
+    View Audience Ratings
+</button>
+</form>
+
+<h1>Ratings</h1>
+
+    <table class="container">
+        <tr>
+            <th>#</th>
+            <th>Movie Id</th>
+            <th>Movie Name</th>
+            <th>Rating</th>
+        </tr>
+
+        {% for rating in ratings %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{rating.movie_id}}</td>
+            <td>{{rating.movie_name}}</td>
+            <td>{{rating.rating}}</td>
+       </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>Remove Audience</h2>
+<hr />
+<div class="mb-3">
+    <label for="audience_username" class="form-label">Audience Username</label>
+    <input
+        name="audience_username"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="Remove Audience" name="Remove Audience">
+    Remove Audience
+</button>
+</form>
+
+
+
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>View Movie Rating</h2>
+<hr />
+<div class="mb-3">
+    <label for="movie_id" class="form-label">Movie Id</label>
+    <input
+        name="movie_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="View Movie Rating" name="View Movie Rating">
+    View Movie Rating
+</button>
+</form>
+
+<h1>Movie Rating</h1>
+
+    <table class="container">
+        <tr>
+            <th>Movie Id</th>
+            <th>Movie Name</th>
+            <th>Overall Rating</th>
+        </tr>
+
+        {% for movie_rating in movie_ratings %}
+        <tr>
+            <td>{{movie_rating.movie_id}}</td>
+            <td>{{movie_rating.movie_name}}</td>
+            <td>{{movie_rating.rating}}</td>
+       </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}

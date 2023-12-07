@@ -1,0 +1,375 @@
+{% extends "header.html" %}
+{% block header %}
+
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+    {{ message }}
+</div>
+{% endfor %}
+
+<div class="container mt-5">
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>List Available Theaters</h2>
+<hr />
+<div class="mb-3">
+    <label for="date" class="form-label">Date</label>
+    <input
+        name="date"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="time_slot" class="form-label">Time Slot</label>
+    <input
+        name="time_slot"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="List Available Theaters" name="List Available Theaters">
+    List Available Theaters
+</button>
+</form>
+
+<h1>Theaters</h1>
+
+    <table class="container">
+        <tr>
+            <th>#</th>
+            <th>Theater Id</th>
+            <th>Theater District</th>
+            <th>Theater Capacity</th>
+        </tr>
+
+        {% for theater in theaters %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{theater.theater_id}}</td>
+            <td>{{theater.theater_district}}</td>
+            <td>{{theater.theater_capacity}}</td>
+       </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>Add Theater</h2>
+<hr />
+<div class="mb-3">
+    <label for="theater_id" class="form-label">Theater Id</label>
+    <input
+        name="theater_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="theater_name" class="form-label">Theater Name</label>
+    <input
+        name="theater_name"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="theater_capacity" class="form-label">Theater Capacity</label>
+    <input
+        name="theater_capacity"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="theater_district" class="form-label">Theater District</label>
+    <input
+        name="theater_district"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="Add Theater" name="Add Theater">
+    Add Theater
+</button>
+</form>
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>Add Movie Session</h2>
+<hr />
+<div class="mb-3">
+    <label for="movie_id" class="form-label">Movie Id</label>
+    <input
+        name="movie_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="movie_name" class="form-label">Movie Name</label>
+    <input
+        name="movie_name"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="theater_id" class="form-label">Theater Id</label>
+    <input
+        name="theater_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="date" class="form-label">Date</label>
+    <input
+        name="date"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="time_slot" class="form-label">Time Slot</label>
+    <input
+        name="time_slot"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="duration" class="form-label">Duration</label>
+    <input
+        name="duration"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="Add Movie Session" name="Add Movie Session">
+    Add Movie Session
+</button>
+</form>
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>Add Genre to Movie</h2>
+<hr />
+<div class="mb-3">
+    <label for="movie_id" class="form-label">Movie Id</label>
+    <input
+        name="movie_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="genre_name" class="form-label">Genre Name</label>
+    <input
+        name="genre_name"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="Add Genre to Movie" name="Add Genre to Movie">
+    Add Genre to Movie
+</button>
+</form>
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>Add Predecessor Movie</h2>
+<hr />
+<div class="mb-3">
+    <label for="child_movie_id" class="form-label">Child Movie Id</label>
+    <input
+        name="child_movie_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="predecessor_movie_id" class="form-label">Predecessor Movie Id</label>
+    <input
+        name="predecessor_movie_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="Add Predecessor Movie" name="Add Predecessor Movie">
+    Add Predecessor Movie
+</button>
+</form>
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>List My Movies</h2>
+<hr />
+<button type="submit" class="btn btn-success" value="List My Movies" name="List My Movies">
+    List My Movies
+</button>
+</form>
+
+<h1>My Movies</h1>
+
+    <table class="container">
+        <tr>
+            <th>#</th>
+            <th>Movie Id</th>
+            <th>Movie Name</th>
+            <th>Theater Id</th>
+            <th>Date</th>
+            <th>Time Slot</th>
+            <th>Duration</th>
+            <th>Predecessor List</th>
+            <th>Genre List</th>
+        </tr>
+
+        {% for movie in movies %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{movie.movie_id}}</td>
+            <td>{{movie.movie_name}}</td>
+            <td>{{movie.theater_id}}</td>
+            <td>{{movie.date}}</td>
+            <td>{{movie.time_slot}}</td>
+            <td>{{movie.duration}}</td>
+            <td>{{movie.predecessor_list}}</td>
+            <td>{{movie.genre_list}}</td>
+       </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>Update Movie Name</h2>
+<hr />
+<div class="mb-3">
+    <label for="movie_id" class="form-label">Movie Id</label>
+    <input
+        name="movie_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<div class="mb-3">
+    <label for="new_movie_name" class="form-label">New Movie Name</label>
+    <input
+        name="new_movie_name"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="Update Movie Name" name="Update Movie Name">
+    Update Movie Name
+</button>
+</form>
+
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>List The Audience</h2>
+<hr />
+<div class="mb-3">
+    <label for="movie_id" class="form-label">Movie Id</label>
+    <input
+        name="movie_id"
+        class="form-control"
+        value=""
+        required
+        type="text"
+    />
+</div>
+<button type="submit" class="btn btn-success" value="List The Audience" name="List The Audience">
+    List The Audience
+</button>
+</form>
+
+<h1>Audience</h1>
+
+    <table class="container">
+        <tr>
+            <th>#</th>
+            <th>Audience Username</th>
+            <th>Auidience Name</th>
+            <th>Audience Surname</th>
+        </tr>
+
+        {% for audience in audience_list %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{audience.username}}</td>
+            <td>{{audience.name}}</td>
+            <td>{{audience.surname}}</td>
+       </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+
+{% endblock %}

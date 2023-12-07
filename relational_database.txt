@@ -1,0 +1,40 @@
+db_manager( username : string, password : string )
+
+audience( name : string, surname : string, password : string, username : string )
+
+director( name : string, surname : string, password : string, username : string, nation : string )
+
+experienced_director( name : string, surname : string, password : string, username : string, nation : string )
+
+rating_platform( platform_id : integer, platform_name : string )
+
+movie( movie_id : integer, duration : integer, movie_name : string, average_rating : real, reviewer_num : integer )
+
+genre( genre_id : integer, genre_name : string )
+
+movie_session( date : string, time_slot : integer )
+
+theater( theater_id : integer, theater_name : string, theater_capacity : integer, theater_district : string )
+
+in_host( date : string, time_slot : integer, theater_id : integer )
+
+in_session( movie_id : integer, session_id : integer, date : string, time_slot : integer, theater_id : integer )
+
+contract( username : string, platform_id : integer )
+
+directed_by( movie_id : integer, username : string, platform_id : integer )
+
+which_genre( movie_id : integer, genre_name : string )
+
+preceded( child_movie_id : integer, predecessor_movie_id : integer )
+
+subscribe( audience_username : string, platform_id : integer )
+
+ticket( ticket_no : string, purchaser : string, session_id : integer, movie_id : integer )
+
+review( rating : real, ticket_no : string, subscribed_audience : string, movie_id : integer, reviewer_platform_id : integer )
+
+Trigger Name: update_avg_rating
+Table: movie
+Event: AFTER INSERT ON review
+Description: Whenever a new rating is added in the review table for a movie, this trigger will fire and update the average rating of the movie in the movie table. Also, it increments the total number of reviewers by 1.

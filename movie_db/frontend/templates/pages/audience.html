@@ -1,0 +1,167 @@
+{% extends "header.html" %}
+{% block header %}
+
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+    {{ message }}
+</div>
+{% endfor %}
+
+<form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>List All Movies</h2>
+<hr />
+<button type="submit" class="btn btn-success" value="List All Movies" name="List All Movies">
+    List All Movies
+</button>
+</form>
+
+<h1>All Movies</h1>
+
+    <table class="container">
+        <tr>
+            <th>#</th>
+            <th>Movie Id</th>
+            <th>Movie Name</th>
+            <th>Director's Surname</th>
+            <th>Theater Id</th>
+            <th>Date</th>
+            <th>Time Slot</th>
+            <th>Duration</th>
+            <th>Predecessor List</th>
+            <th>Genre List</th>
+        </tr>
+
+        {% for movie in movies %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{movie.movie_id}}</td>
+            <td>{{movie.movie_name}}</td>
+            <td>{{movie.director_surname}}</td>
+            <td>{{movie.theater_id}}</td>
+            <td>{{movie.date}}</td>
+            <td>{{movie.time_slot}}</td>
+            <td>{{movie.duration}}</td>
+            <td>{{movie.predecessor_list}}</td>
+            <td>{{movie.genre_list}}</td>
+       </tr>
+        {% endfor %}
+    </table>
+
+    <form
+    class="col-6 mx-auto card p-3 shadow-lg"
+    method="POST"
+    enctype="multipart/form-data"
+    >
+    <h2>Purchase Movie Ticket</h2>
+    <hr />
+    <div class="mb-3">
+        <label for="session_id" class="form-label">Session ID</label>
+        <input
+            name="session_id"
+            class="form-control"
+            value=""
+            required
+            type="text"
+        />
+    </div>
+    <button type="submit" class="btn btn-success" value="Purchase Movie Ticket" name="Purchase Movie Ticket">
+        Purchase Movie Ticket
+    </button>
+    </form>
+
+    <form
+class="col-6 mx-auto card p-3 shadow-lg"
+method="POST"
+enctype="multipart/form-data"
+>
+<h2>List My Tickets</h2>
+<hr />
+<button type="submit" class="btn btn-success" value="List My Tickets" name="List My Tickets">
+    List My Tickets
+</button>
+</form>
+
+<h1>My Tickets</h1> 
+    <table class="container">
+        <tr>
+            <th>#</th>
+            <th>Movie Id</th>
+            <th>Movie Name</th>
+            <th>Session Id</th>
+            <th>My Rating</th>
+            <th>Overall Rating</th>
+        </tr>
+
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{ticket.movie_id}}</td>
+            <td>{{ticket.movie_name}}</td>
+            <td>{{ticket.session_id}}</td>
+            <td>{{ticket.my_rating}}</td>
+            <td>{{ticket.overall_rating}}</td>
+       </tr>
+        {% endfor %}
+    </table>
+
+    <form
+    class="col-6 mx-auto card p-3 shadow-lg"
+    method="POST"
+    enctype="multipart/form-data"
+    >
+    <h2>Subscribe to Rating Platform</h2>
+    <hr />
+    <div class="mb-3">
+        <label for="platform_id" class="form-label">Rating Platform ID</label>
+        <input
+            name="platform_id"
+            class="form-control"
+            value=""
+            required
+            type="text"
+        />
+    </div>
+    <button type="submit" class="btn btn-success" value="Subscribe to Rating Platform" name="Subscribe to Rating Platform">
+        Subscribe to Rating Platform
+    </button>
+    </form>
+
+    <form
+    class="col-6 mx-auto card p-3 shadow-lg"
+    method="POST"
+    enctype="multipart/form-data"
+    >
+    <h2>Rate a Movie</h2>
+    <hr />
+    <div class="mb-3">
+        <label for="movie_id" class="form-label">Movie ID</label>
+        <input
+            name="movie_id"
+            class="form-control"
+            value=""
+            required
+            type="text"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="rating" class="form-label">Rating</label>
+        <input
+            name="rating"
+            class="form-control"
+            value=""
+            required
+            type="text"
+        />
+    </div>
+    <button type="submit" class="btn btn-success" value="Rate a Movie" name="Rate a Movie">
+        Rate a Movie
+    </button>
+    </form>
+
+
+
+{% endblock %}
